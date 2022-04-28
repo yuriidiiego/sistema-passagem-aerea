@@ -37,7 +37,7 @@ public class UsuarioServiceImpl {
     usuario.setLogado(false);
     limparTela();
 
-    listaDeUsuarios.add(usuario);
+    adicionaNaLista(usuario);
     limparTela();
 
     return retornaLog();
@@ -127,6 +127,10 @@ public class UsuarioServiceImpl {
       );
       menuInicialReserva();
     }
+  }
+
+  private static void adicionaNaLista(Usuario usuario) {
+    listaDeUsuarios.add(usuario);
   }
 
   private static boolean usuarioLogado() {
