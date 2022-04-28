@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class UsuarioServiceImpl {
-  static Console console = System.console();
-  static List<Usuario> listaDeUsuarios = new LinkedList<>();
+  private static Console console = System.console();
+  private static List<Usuario> listaDeUsuarios = new LinkedList<>();
   private static final String ANSI_GREEN = "\u001B[32m";
   private static final String ANSI_RED = "\u001B[31m";
   private static final String ANSI_RESET = "\u001B[0m";
@@ -130,6 +130,6 @@ public class UsuarioServiceImpl {
   }
 
   private static boolean usuarioLogado() {
-    return listaDeUsuarios.stream().anyMatch(usuario -> usuario.isLogado());
+    return listaDeUsuarios.stream().anyMatch(Usuario::isLogado);
   }
 }
