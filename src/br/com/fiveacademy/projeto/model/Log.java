@@ -35,23 +35,4 @@ public class Log {
       return new Log(this);
     }
   }
-
-  @Override
-  public String toString() {
-    return (
-      "Log{" +
-      "timeStamp='" +
-      timeStamp +
-      '\'' +
-      ", usuario=" +
-      usuario +
-      ", acao='" +
-      acao +
-      '\'' +
-      ", valor='" +
-      valor +
-      '\'' +
-      '}'
-    );
-  }
 }

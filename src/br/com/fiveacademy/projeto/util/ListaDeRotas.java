@@ -1,4 +1,4 @@
-package br.com.fiveacademy.projeto.service;
+package br.com.fiveacademy.projeto.util;
 
 import br.com.fiveacademy.projeto.model.Rota;
 import java.util.ArrayList;

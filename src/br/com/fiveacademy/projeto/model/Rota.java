@@ -125,13 +125,20 @@ public class Rota {
   public String toString() {
     return (
       id +
-      " - " +
+      " | " +
+      "Origem: " +
       origem +
-      " - " +
+      " | " +
+      "Destino: " +
       destino +
-      " - " +
+      " | " +
+      "Horario: " +
+      horario +
+      " | " +
+      "Data: " +
       data +
-      " - " +
+      " | " +
+      "Preco: " +
       preco +
       "\n"
     );

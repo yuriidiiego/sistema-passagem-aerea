@@ -1,7 +1,8 @@
 package br.com.fiveacademy.projeto.model;
 
-import br.com.fiveacademy.projeto.view.Menu;
-import java.io.IOException;
+import static br.com.fiveacademy.projeto.util.ServiceUtils.digiteNovamente;
+import static br.com.fiveacademy.projeto.util.ServiceUtils.limparTela;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
@@ -11,7 +12,7 @@ public class Usuario {
   private String nome;
   private String cpf;
   private String senha;
-  private boolean logado;
+  private Boolean logado;
   private List<Rota> rotas = new LinkedList<>();
 
   public Usuario() {}
@@ -21,7 +22,7 @@ public class Usuario {
     String nome,
     String cpf,
     String senha,
-    boolean logado
+    Boolean logado
   ) {
     this.id = id;
     this.nome = nome;
@@ -34,13 +35,16 @@ public class Usuario {
     this.id = id;
   }
 
-  public String getNome() {
-    return nome;
-  }
-
-  public void setNome(String nome) throws IOException {
-    if (nome.length() < 3) {
-      System.out.println("Nome deve conter no mínimo 3 caracteres!");
+  public void setNome(String nome) {
+    while (!nome.matches("[a-zA-Z ]+")) {
+      System.out.println("Nome deve conter apenas letras!");
+      nome = digiteNovamente();
+      limparTela();
+    }
+    while (nome.length() < 3 || nome.length() > 50) {
+      System.out.println("Nome deve ter entre 3 e 50 caracteres!");
+      nome = digiteNovamente();
+      limparTela();
     }
     this.nome = nome;
   }
@@ -49,14 +53,16 @@ public class Usuario {
     return cpf;
   }
 
-  public void setCpf(String cpf) throws IOException {
-    if (!cpf.matches("[0-9]+")) {
+  public void setCpf(String cpf) {
+    while (!cpf.matches("[0-9]+")) {
       System.out.println("CPF deve conter apenas números!");
-      Menu.menuInicial();
+      cpf = digiteNovamente();
+      limparTela();
     }
-    if (cpf.length() != 11) {
-      System.out.println("CPF deve conter 11 dígitos!");
-      Menu.menuInicial();
+    while (cpf.length() != 11) {
+      System.out.println("CPF deve ter 11 caracteres!");
+      cpf = digiteNovamente();
+      limparTela();
     }
     this.cpf = cpf;
   }
@@ -69,20 +75,12 @@ public class Usuario {
     this.senha = senha;
   }
 
-  public boolean isLogado() {
-    return logado;
-  }
-
-  public void setLogado(boolean logado) {
+  public void setLogado(Boolean logado) {
     this.logado = logado;
   }
 
   public List<Rota> getRotas() {
     return rotas;
-  }
-
-  public void setRotas(List<Rota> rotas) {
-    this.rotas = rotas;
   }
 
   @Override
@@ -123,5 +121,9 @@ public class Usuario {
       logado +
       "\n"
     );
+  }
+
+  public Boolean isLogado() {
+    return Boolean.TRUE.equals(logado);
   }
 }

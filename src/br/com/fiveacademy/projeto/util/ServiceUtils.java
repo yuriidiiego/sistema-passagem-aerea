@@ -10,8 +10,15 @@ public class ServiceUtils {
     console.flush();
   }
 
-  public static void esperarTecla() {
-    console.printf("\nPressione qualquer tecla para continuar...");
-    console.readLine();
+  public static String digiteNovamente() {
+    return console.readLine("\nDigite novamente: ");
+  }
+
+  public static void pulaLinha() {
+    console.writer().println();
+  }
+
+  public static void pulaDuasLinhas() {
+    console.printf("\n\n");
   }
 }
