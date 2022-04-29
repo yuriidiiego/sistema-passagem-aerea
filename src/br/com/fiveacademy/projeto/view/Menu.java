@@ -6,9 +6,10 @@ import static br.com.fiveacademy.projeto.service.RotaServiceImpl.visualizaReserv
 import static br.com.fiveacademy.projeto.service.UsuarioServiceImpl.cadastro;
 import static br.com.fiveacademy.projeto.service.UsuarioServiceImpl.listarUsuarios;
 import static br.com.fiveacademy.projeto.service.UsuarioServiceImpl.login;
+import static br.com.fiveacademy.projeto.service.UsuarioServiceImpl.logout;
 import static br.com.fiveacademy.projeto.util.ServiceUtils.limparTela;
+import static java.lang.System.exit;
 
-import br.com.fiveacademy.projeto.service.UsuarioServiceImpl;
 import java.io.Console;
 import java.io.IOException;
 
@@ -60,11 +61,11 @@ public class Menu {
         menuInicialUsuario();
         break;
       case "4":
-        UsuarioServiceImpl.logout();
+        logout();
         menuInicialUsuario();
         break;
       case "5":
-        System.exit(0);
+        exit(0);
         break;
       default:
         limparTela();

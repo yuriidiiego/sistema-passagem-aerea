@@ -4,8 +4,10 @@ import static br.com.fiveacademy.projeto.util.ServiceUtils.limparTela;
 import static br.com.fiveacademy.projeto.util.ServiceUtils.pulaDuasLinhas;
 import static br.com.fiveacademy.projeto.util.ServiceUtils.pulaLinha;
 import static br.com.fiveacademy.projeto.view.Menu.menuInicialReserva;
+import static java.lang.Boolean.TRUE;
 import static java.time.LocalDateTime.now;
 import static java.time.format.DateTimeFormatter.ofPattern;
+import static java.util.UUID.randomUUID;
 
 import br.com.fiveacademy.projeto.model.Log;
 import br.com.fiveacademy.projeto.model.Usuario;
@@ -13,7 +15,6 @@ import java.io.Console;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 
 public class UsuarioServiceImpl {
   private static Console console = System.console();
@@ -25,7 +26,7 @@ public class UsuarioServiceImpl {
   public static Log cadastro() {
     limparTela();
     Usuario usuario = new Usuario();
-    usuario.setId(UUID.randomUUID());
+    usuario.setId(randomUUID());
     String nome = console.readLine("[Nome]: ");
     usuario.setNome(nome);
     limparTela();
@@ -88,9 +89,9 @@ public class UsuarioServiceImpl {
     limparTela();
     console.printf("Deseja realmente deslogar? (S/N) ");
     String resposta = console.readLine();
-    if (resposta.equalsIgnoreCase("s")) { //
-      for (Usuario usuario : listaDeUsuarios) { 
-        if (Boolean.TRUE.equals(usuario.isLogado())) {
+    if (resposta.equalsIgnoreCase("s")) {
+      for (Usuario usuario : listaDeUsuarios) {
+        if (TRUE.equals(usuario.isLogado())) {
           usuario.setLogado(false);
         }
       }
