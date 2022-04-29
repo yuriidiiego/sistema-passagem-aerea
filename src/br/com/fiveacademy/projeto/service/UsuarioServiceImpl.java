@@ -55,7 +55,6 @@ public class UsuarioServiceImpl {
   }
 
   public static void login() throws IOException {
-    // se o usuario estiver logado, retorna mensagem dizendo: "Você já está logado!"
     if (usuarioLogado()) {
       limparTela();
       console.printf(ANSI_RED + "Você já está logado!\n" + ANSI_RESET);
@@ -86,7 +85,16 @@ public class UsuarioServiceImpl {
   }
 
   private static void deslogar() {
-    listaDeUsuarios.forEach(usuario -> usuario.setLogado(false));
+    limparTela();
+    console.printf("Deseja realmente deslogar? (S/N) ");
+    String resposta = console.readLine();
+    if (resposta.equalsIgnoreCase("s")) { //
+      for (Usuario usuario : listaDeUsuarios) { 
+        if (Boolean.TRUE.equals(usuario.isLogado())) {
+          usuario.setLogado(false);
+        }
+      }
+    }
   }
 
   private static boolean usuariosIsEmpty() {
@@ -97,7 +105,6 @@ public class UsuarioServiceImpl {
     throws IOException {
     for (Usuario usuario : listaDeUsuarios) {
       verificaELoga(cpf, senha, usuario);
-      usuario.setLogado(true);
     }
   }
 
@@ -133,6 +140,8 @@ public class UsuarioServiceImpl {
         ANSI_GREEN + "Login realizado com sucesso!\n\n" + ANSI_RESET
       );
       menuInicialReserva();
+    } else {
+      usuario.setLogado(false);
     }
   }
 
