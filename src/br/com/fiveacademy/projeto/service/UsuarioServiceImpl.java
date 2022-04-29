@@ -26,13 +26,13 @@ public class UsuarioServiceImpl {
     limparTela();
     Usuario usuario = new Usuario();
     usuario.setId(UUID.randomUUID());
-    String nome = console.readLine("Digite seu nome: ");
+    String nome = console.readLine("[Nome]: ");
     usuario.setNome(nome);
     limparTela();
-    String cpf = console.readLine("Digite seu CPF: ");
+    String cpf = console.readLine("[CPF]: ");
     usuario.setCpf(cpf);
     limparTela();
-    String senha = console.readLine("Digite sua senha: ");
+    String senha = console.readLine("[Senha]: ");
     usuario.setSenha(senha);
     usuario.setLogado(false);
     limparTela();
@@ -40,7 +40,7 @@ public class UsuarioServiceImpl {
     adicionaNaLista(usuario);
     limparTela();
 
-    return retornaLog();
+    return messageLog();
   }
 
   public static void listarUsuarios() {
@@ -55,6 +55,13 @@ public class UsuarioServiceImpl {
   }
 
   public static void login() throws IOException {
+    // se o usuario estiver logado, retorna mensagem dizendo: "Você já está logado!"
+    if (usuarioLogado()) {
+      limparTela();
+      console.printf(ANSI_RED + "Você já está logado!\n" + ANSI_RESET);
+      pulaLinha();
+      return;
+    }
     limparTela();
     String cpf = console.readLine("Digite seu CPF: ");
     limparTela();
@@ -94,7 +101,7 @@ public class UsuarioServiceImpl {
     }
   }
 
-  private static Log retornaLog() {
+  private static Log messageLog() {
     return new Log.Builder()
       .setAcao(
         console.printf(
