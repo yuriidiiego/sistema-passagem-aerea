@@ -105,21 +105,20 @@ public class Usuario {
 
   public String toString() {
     return (
-      "id: " +
+      "ID: " +
       id +
-      "\n" +
-      "nome: " +
+      " | " +
+      "Nome: " +
       nome +
-      "\n" +
-      "cpf: " +
+      " | " +
+      "CPF: " +
       cpf +
-      "\n" +
-      "senha: " +
+      " | " +
+      "Senha: " +
       senha +
-      "\n" +
-      "logado: " +
-      logado +
-      "\n"
+      " | " +
+      "Logado: " +
+      logado
     );
   }
 
