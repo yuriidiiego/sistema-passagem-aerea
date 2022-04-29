@@ -21,13 +21,19 @@ public class Menu {
 
   public static void menuInicialUsuario() throws IOException {
     console.printf(
-      RED_BRIGHT + "=====================================\n" + ANSI_RESET
+      RED_BRIGHT +
+      "================================================================================\n" +
+      ANSI_RESET
     );
     console.printf(
-      YELLOW_BRIGHT + "S I S T E M A   D E   R E S E R V A S\n" + ANSI_RESET
+      YELLOW_BRIGHT +
+      "S I S T E M A   D E   R E S E R V A   D E   P A S S A G E N S   D E   A V I Ã O \n" +
+      ANSI_RESET
     );
     console.printf(
-      ANSI_BLUE + "=====================================\n" + ANSI_RESET
+      ANSI_BLUE +
+      "================================================================================\n" +
+      ANSI_RESET
     );
 
     console.printf("1 - Login\n");
