@@ -128,7 +128,9 @@ public class Usuario {
       senha +
       " | " +
       "Logado: " +
-      logado
+      logado +
+      " | " +
+      "\n"
     );
   }
 
