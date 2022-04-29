@@ -14,6 +14,8 @@ public class Usuario {
   private String senha;
   private Boolean logado;
   private List<Rota> rotas = new LinkedList<>();
+  private static final String ANSI_RED = "\u001B[31m";
+  private static final String ANSI_RESET = "\u001B[0m";
 
   public Usuario() {}
 
@@ -36,13 +38,18 @@ public class Usuario {
   }
 
   public void setNome(String nome) {
+    limparTela();
     while (!nome.matches("[a-zA-Z ]+")) {
-      System.out.println("Nome deve conter apenas letras!");
+      System.out.println(
+        ANSI_RED + "Nome deve conter apenas letras!" + ANSI_RESET
+      );
       nome = digiteNovamente();
       limparTela();
     }
     while (nome.length() < 3 || nome.length() > 50) {
-      System.out.println("Nome deve ter entre 3 e 50 caracteres!");
+      System.out.println(
+        ANSI_RED + "Nome deve ter entre 3 e 50 caracteres!" + ANSI_RESET
+      );
       nome = digiteNovamente();
       limparTela();
     }
@@ -54,13 +61,16 @@ public class Usuario {
   }
 
   public void setCpf(String cpf) {
+    limparTela();
     while (!cpf.matches("[0-9]+")) {
-      System.out.println("CPF deve conter apenas números!");
+      System.out.println(
+        ANSI_RED + "CPF deve conter apenas números! " + ANSI_RESET
+      );
       cpf = digiteNovamente();
       limparTela();
     }
     while (cpf.length() != 11) {
-      System.out.println("CPF deve ter 11 caracteres!");
+      System.out.println(ANSI_RED + "CPF deve ter 11 caracteres!" + ANSI_RESET);
       cpf = digiteNovamente();
       limparTela();
     }
