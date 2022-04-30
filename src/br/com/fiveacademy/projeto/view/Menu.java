@@ -65,6 +65,7 @@ public class Menu {
         menuInicialUsuario();
         break;
       case "5":
+        console.printf("Saindo do sistema...\n");
         exit(0);
         break;
       default:
