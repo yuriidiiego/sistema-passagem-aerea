@@ -27,6 +27,14 @@ public class RotaServiceImpl {
     pulaLinha();
     int id = parseInt(console.readLine("Digite o ID da rota: "));
     buscaRotaPorId(id);
+    if (usuario.getRotas().contains(rota)) {
+      limparTela();
+      console.printf(
+        ANSI_RED + "Você já possui reserva para essa rota!\n" + ANSI_RESET
+      );
+      pulaLinha();
+      return null;
+    }
     adicionaRotaAoUsuario();
     limparTela();
     return messageLog();
